@@ -14,12 +14,10 @@ class LinearFunction : public ParametricFunction {
 private:
     double a, b;
 public:
-    // Конструктори
     LinearFunction() : a(0), b(0) {}
     LinearFunction(double a_val, double b_val) : a(a_val), b(b_val) {}
     LinearFunction(const LinearFunction& other) : a(other.a), b(other.b) {}
 
-    // Перевизначення віртуальної функції
     double calculate(double x) const override {
         return a * x + b;
     }
@@ -30,12 +28,10 @@ class QuadraticFunction : public ParametricFunction {
 private:
     double a, b, c;
 public:
-    // Конструктори
     QuadraticFunction() : a(0), b(0), c(0) {}
     QuadraticFunction(double a_val, double b_val, double c_val) : a(a_val), b(b_val), c(c_val) {}
     QuadraticFunction(const QuadraticFunction& other) : a(other.a), b(other.b), c(other.c) {}
 
-    // Перевизначення віртуальної функції
     double calculate(double x) const override {
         return a * x * x + b * x + c;
     }
@@ -46,12 +42,10 @@ class HarmonicFunction : public ParametricFunction {
 private:
     double A, omega, phi;
 public:
-    // Конструктори
     HarmonicFunction() : A(0), omega(0), phi(0) {}
     HarmonicFunction(double A_val, double w_val, double phi_val) : A(A_val), omega(w_val), phi(phi_val) {}
     HarmonicFunction(const HarmonicFunction& other) : A(other.A), omega(other.omega), phi(other.phi) {}
 
-    // Перевизначення віртуальної функції
     double calculate(double x) const override {
         return A * std::sin(omega * x + phi);
     }
@@ -73,7 +67,6 @@ public:
         functions.push_back(func);
     }
 
-    // Обчислення суми значень всіх функцій для аргументу x з використанням механізм поліморфізму
     double calculateSum(double x) const {
         double sum = 0.0;
         for (const ParametricFunction* func : functions) {
@@ -84,33 +77,26 @@ public:
 };
 
 int main() {
-    std::cout << "--- Демонстрація роботи класів ---\n";
+    std::cout << "--- Demonstration of class functionality ---\n";
     FunctionContainer container;
-    // Лінійна: f(x) = 2x + 3
     ParametricFunction* lin_func = new LinearFunction(2.0, 3.0); 
-    
-    // Квадратична: f(x) = 1x^2 - 2x + 1
     ParametricFunction* quad_func = new QuadraticFunction(1.0, -2.0, 1.0); 
-    
-    // Гармонічна: f(x) = 5 * sin(1*x + 0)
     ParametricFunction* harm_func = new HarmonicFunction(5.0, 1.0, 0.0); 
 
-    // Додаємо об'єкти до контейнера
     container.addFunction(lin_func);
     container.addFunction(quad_func);
     container.addFunction(harm_func);
 
-    // Задаємо аргумент
-    double x = 3.14159 / 2; // Приблизно pi/2
+    double x = 3.14159 / 2; // Approximately pi/2
 
-    std::cout << "Аргумент x = " << x << "\n\n";
+    std::cout << "Argument x = " << x << "\n\n";
 
-    std::cout << "Значення лінійної функції: " << lin_func->calculate(x) << "\n";
-    std::cout << "Значення квадратичної функції: " << quad_func->calculate(x) << "\n";
-    std::cout << "Значення гармонічної функції: " << harm_func->calculate(x) << "\n\n";
+    std::cout << "Value of the linear function: " << lin_func->calculate(x) << "\n";
+    std::cout << "Value of the quadratic function: " << quad_func->calculate(x) << "\n";
+    std::cout << "Value of the harmonic function: " << harm_func->calculate(x) << "\n\n";
 
     double total_sum = container.calculateSum(x);
-    std::cout << "Сума значень усіх функцій у контейнері: " << total_sum << "\n";
+    std::cout << "Sum of the values of all functions in the container: " << total_sum << "\n";
 
     return 0; 
 }
