@@ -8,6 +8,7 @@
 class ParametricFunction {
 public:
     ParametricFunction() {}
+    ParametricFunction(const ParametricFunction&) = default;
     virtual ~ParametricFunction() {}
 
     virtual double calculate(double x) const = 0;

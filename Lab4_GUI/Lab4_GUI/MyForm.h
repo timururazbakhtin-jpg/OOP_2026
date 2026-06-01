@@ -21,6 +21,7 @@ namespace Lab4GUI {
 		MyForm(void)
 		{
 			InitializeComponent();
+			comboBoxType->SelectedIndex = 0;
 			myContainer = new FunctionContainer();
 		}
 
@@ -46,6 +47,9 @@ namespace Lab4GUI {
 	private: System::Windows::Forms::Label^ lblParam2;
 
 	private: System::Windows::Forms::Label^ lblParam3;
+	private: System::Windows::Forms::TextBox^ txtX;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ btnCalculateSum;
 
 
 
@@ -73,11 +77,14 @@ namespace Lab4GUI {
 			this->lblParam1 = (gcnew System::Windows::Forms::Label());
 			this->lblParam2 = (gcnew System::Windows::Forms::Label());
 			this->lblParam3 = (gcnew System::Windows::Forms::Label());
+			this->txtX = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->btnCalculateSum = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// txtParam1
 			// 
-			this->txtParam1->Location = System::Drawing::Point(199, 51);
+			this->txtParam1->Location = System::Drawing::Point(63, 51);
 			this->txtParam1->Name = L"txtParam1";
 			this->txtParam1->Size = System::Drawing::Size(183, 20);
 			this->txtParam1->TabIndex = 0;
@@ -85,14 +92,14 @@ namespace Lab4GUI {
 			// 
 			// txtParam2
 			// 
-			this->txtParam2->Location = System::Drawing::Point(199, 86);
+			this->txtParam2->Location = System::Drawing::Point(63, 83);
 			this->txtParam2->Name = L"txtParam2";
 			this->txtParam2->Size = System::Drawing::Size(183, 20);
 			this->txtParam2->TabIndex = 1;
 			// 
 			// btnAdd
 			// 
-			this->btnAdd->Location = System::Drawing::Point(223, 171);
+			this->btnAdd->Location = System::Drawing::Point(87, 182);
 			this->btnAdd->Name = L"btnAdd";
 			this->btnAdd->Size = System::Drawing::Size(159, 38);
 			this->btnAdd->TabIndex = 2;
@@ -103,9 +110,9 @@ namespace Lab4GUI {
 			// listBoxFunctions
 			// 
 			this->listBoxFunctions->FormattingEnabled = true;
-			this->listBoxFunctions->Location = System::Drawing::Point(25, 231);
+			this->listBoxFunctions->Location = System::Drawing::Point(25, 244);
 			this->listBoxFunctions->Name = L"listBoxFunctions";
-			this->listBoxFunctions->Size = System::Drawing::Size(357, 173);
+			this->listBoxFunctions->Size = System::Drawing::Size(357, 160);
 			this->listBoxFunctions->TabIndex = 3;
 			this->listBoxFunctions->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::listBox1_SelectedIndexChanged);
 			// 
@@ -122,7 +129,7 @@ namespace Lab4GUI {
 			// 
 			// txtParam3
 			// 
-			this->txtParam3->Location = System::Drawing::Point(199, 124);
+			this->txtParam3->Location = System::Drawing::Point(63, 113);
 			this->txtParam3->Name = L"txtParam3";
 			this->txtParam3->Size = System::Drawing::Size(183, 20);
 			this->txtParam3->TabIndex = 5;
@@ -130,7 +137,7 @@ namespace Lab4GUI {
 			// lblParam1
 			// 
 			this->lblParam1->AutoSize = true;
-			this->lblParam1->Location = System::Drawing::Point(158, 51);
+			this->lblParam1->Location = System::Drawing::Point(22, 54);
 			this->lblParam1->Name = L"lblParam1";
 			this->lblParam1->Size = System::Drawing::Size(35, 13);
 			this->lblParam1->TabIndex = 6;
@@ -139,7 +146,7 @@ namespace Lab4GUI {
 			// lblParam2
 			// 
 			this->lblParam2->AutoSize = true;
-			this->lblParam2->Location = System::Drawing::Point(158, 86);
+			this->lblParam2->Location = System::Drawing::Point(22, 86);
 			this->lblParam2->Name = L"lblParam2";
 			this->lblParam2->Size = System::Drawing::Size(35, 13);
 			this->lblParam2->TabIndex = 7;
@@ -149,17 +156,46 @@ namespace Lab4GUI {
 			// lblParam3
 			// 
 			this->lblParam3->AutoSize = true;
-			this->lblParam3->Location = System::Drawing::Point(158, 124);
+			this->lblParam3->Location = System::Drawing::Point(22, 113);
 			this->lblParam3->Name = L"lblParam3";
 			this->lblParam3->Size = System::Drawing::Size(35, 13);
 			this->lblParam3->TabIndex = 8;
 			this->lblParam3->Text = L"label3";
+			// 
+			// txtX
+			// 
+			this->txtX->Location = System::Drawing::Point(361, 47);
+			this->txtX->Name = L"txtX";
+			this->txtX->Size = System::Drawing::Size(183, 20);
+			this->txtX->TabIndex = 9;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(292, 50);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(63, 13);
+			this->label1->TabIndex = 10;
+			this->label1->Text = L"Argument x:";
+			// 
+			// btnCalculateSum
+			// 
+			this->btnCalculateSum->Location = System::Drawing::Point(424, 83);
+			this->btnCalculateSum->Name = L"btnCalculateSum";
+			this->btnCalculateSum->Size = System::Drawing::Size(120, 43);
+			this->btnCalculateSum->TabIndex = 11;
+			this->btnCalculateSum->Text = L"Calculate sum";
+			this->btnCalculateSum->UseVisualStyleBackColor = true;
+			this->btnCalculateSum->Click += gcnew System::EventHandler(this, &MyForm::btnCalculateSum_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(576, 432);
+			this->Controls->Add(this->btnCalculateSum);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->txtX);
 			this->Controls->Add(this->lblParam3);
 			this->Controls->Add(this->lblParam2);
 			this->Controls->Add(this->lblParam1);
@@ -181,38 +217,43 @@ namespace Lab4GUI {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (comboBoxType->SelectedIndex == -1) {
-			MessageBox::Show("Будь ласка, оберіть тип функції!", "Помилка");
+			MessageBox::Show("Please choose function type!", "Error");
 			return;
 		}
 
-		double p1 = System::Convert::ToDouble(txtParam1->Text);
-		double p2 = System::Convert::ToDouble(txtParam2->Text);
+		try {
+			double p1 = System::Convert::ToDouble(txtParam1->Text);
+			double p2 = System::Convert::ToDouble(txtParam2->Text);
 
-		ParametricFunction* newFunc = nullptr;
+			ParametricFunction* newFunc = nullptr;
 
-		if (comboBoxType->SelectedIndex == 0) { 
-			newFunc = new LinearFunction(p1, p2);
+			if (comboBoxType->SelectedIndex == 0) {
+				newFunc = new LinearFunction(p1, p2);
+			}
+			else {
+				double p3 = System::Convert::ToDouble(txtParam3->Text);
+
+				if (comboBoxType->SelectedIndex == 1) { 
+					newFunc = new QuadraticFunction(p1, p2, p3);
+				}
+				else if (comboBoxType->SelectedIndex == 2) { 
+					newFunc = new HarmonicFunction(p1, p2, p3);
+				}
+			}
+
+			if (newFunc != nullptr) {
+				myContainer->addFunction(newFunc);
+
+				listBoxFunctions->Items->Clear();
+				std::vector<std::string> info = myContainer->getAllFunctionsInfo();
+
+				for (const auto& str : info) {
+					listBoxFunctions->Items->Add(gcnew System::String(str.c_str()));
+				}
+			}
 		}
-		else {
-			double p3 = System::Convert::ToDouble(txtParam3->Text);
-
-			if (comboBoxType->SelectedIndex == 1) { // Квадратична
-				newFunc = new QuadraticFunction(p1, p2, p3);
-			}
-			else if (comboBoxType->SelectedIndex == 2) { // Гармонічна
-				newFunc = new HarmonicFunction(p1, p2, p3);
-			}
-		}
-
-		if (newFunc != nullptr) {
-			myContainer->addFunction(newFunc);
-
-			listBoxFunctions->Items->Clear();
-			std::vector<std::string> info = myContainer->getAllFunctionsInfo();
-
-			for (const auto& str : info) {
-				listBoxFunctions->Items->Add(gcnew System::String(str.c_str()));
-			}
+		catch (System::FormatException^) {
+			MessageBox::Show("Please use only correct numeric values!", "Input error");
 		}
 	}
 	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -244,6 +285,16 @@ private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, Sys
 	}
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btnCalculateSum_Click(System::Object^ sender, System::EventArgs^ e) {
+	try {
+		double x = System::Convert::ToDouble(txtX->Text);
+		double result = myContainer->calculateSum(x);
+		MessageBox::Show("Sum of function values: " + result.ToString(), "Result");
+	}
+	catch (System::FormatException^) {
+		MessageBox::Show("Please input correct value of x!", "Error");
+	}
 }
 };
 }
